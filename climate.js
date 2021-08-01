@@ -59,8 +59,8 @@ loadData().then(() => {
 
 function co2ForestScene() {
 
-    var x = d3.scaleLog().domain([0,34041046]).range([ 0, width ]).base(10)
-    var y = d3.scaleLog().domain([0,20055411]).range([ height, 0]).base(10)
+    var x = d3.scaleLog().domain([0,34041046]).range([ 0, 34041046 ]).base(10)
+    var y = d3.scaleLog().domain([0,20055411]).range([ 20055411, 0]).base(10)
 
     //Country_filter = _.where(data, {"Country Name": Country});
 
@@ -96,7 +96,7 @@ function co2ForestScene() {
     .append('circle')
     .attr('cx', function(d,i){
         if(d.Forest != '..'){
-            return d.Forest
+            return x(d.Forest)
         } else{
             return 0;
         }
@@ -105,7 +105,7 @@ function co2ForestScene() {
     .attr('cy', function(d,i){ 
         
         if(d.CO2 != '..'){
-            return d.CO2
+            return y(d.CO2)
         } else{
             return 0;
         }
