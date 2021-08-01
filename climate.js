@@ -5,6 +5,25 @@ var grouped_data;
 var Country = 'World';
 var Year = '2018'
 
+var w = window,
+    d = document,
+    e = d.documentElement,
+    g = d.getElementsByTagName('body')[0],
+    x = w.innerWidth || e.clientWidth || g.clientWidth,
+    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+var svg = d3.select("svg")
+    .attr("width", x)
+    .attr("height", y)
+
+
+function updateWindow(){
+    x = w.innerWidth || e.clientWidth || g.clientWidth;
+    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+    
+    svg.attr("width", x).attr("height", y);
+}
+
 async function loadData() {
 
     data = await d3.csv('CO2_Forest_Data.csv');
@@ -12,7 +31,7 @@ async function loadData() {
 
 loadData().then(() => {
 
-
+    window.onresize = updateWindow;
     co2ForestScene()
 
     //grouped_data = d3.group(data, d => d.Year)
