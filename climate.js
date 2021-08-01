@@ -61,7 +61,7 @@ function co2ForestScene() {
     .enter()
     .append('circle')
     .attr('cx', function(d,i){
-        if(d.Forest != '..'{
+        if(d.Forest != '..'){
             return d.Forest
         } else{
             return 0;
@@ -70,7 +70,7 @@ function co2ForestScene() {
     })
     .attr('cy', function(d,i){ 
         
-        if(d.CO2 != '..'{
+        if(d.CO2 != '..'){
             return d.CO2
         } else{
             return 0;
