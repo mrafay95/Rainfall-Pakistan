@@ -47,11 +47,35 @@ function co2ForestScene() {
 
     var co2Forest = []
     for (let index = 0; index < CountryName_array.length; index++) {
-        co2Forest.push({'Country': CountryName_array[index], 'C02': C02_array[index], 'Forest': Forest_array[index]})
+        co2Forest.push({'Country': CountryName_array[index], 'CO2': C02_array[index], 'Forest': Forest_array[index]})
         
     }
 
     console.log(co2Forest)
+
+
+    d3.select('svg').append('g')
+    .attr("transform","translate("+50+","+50+")")
+    .selectAll('circle')
+    .data(co2Forest)
+    .enter()
+    .append('circle')
+    .attr('cx', function(d,i){
+        if(d.Forest != '..'{
+            return d.Forest
+        } else{
+            return 0;
+        }
+        
+    })
+    .attr('cy', function(d,i){ 
+        
+        if(d.CO2 != '..'{
+            return d.CO2
+        } else{
+            return 0;
+        }
+    })
 
 
 }
