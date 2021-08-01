@@ -21,11 +21,6 @@ loadData().then(() => {
 
     console.log(grouped_data)
 
-
-
-
-
-
 })
 
 
