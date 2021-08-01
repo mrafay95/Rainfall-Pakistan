@@ -1,6 +1,5 @@
 
 var data;
-var grouped_data;
 
 var Country = 'World';
 var Year = '2018'
@@ -83,7 +82,7 @@ function co2ForestScene() {
         }
     }).attr('r', function(d,i){ 
         
-        if(d.CO2 != '..' || d.Forest != '..'){
+        if(d.CO2 == '..' || d.Forest == '..'){
             return 0
         } else{
             return 2;
