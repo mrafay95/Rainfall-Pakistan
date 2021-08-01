@@ -16,12 +16,7 @@ var svg = d3.select("#my_dataviz")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");  
 
-var w = window,
-    d = document,
-    e = d.documentElement,
-    g = d.getElementsByTagName('body')[0],
-    width = w.innerWidth || e.clientWidth || g.clientWidth,
-    height = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
 
 var svg = d3.select("svg")
     .attr("width", width)
@@ -53,12 +48,6 @@ var mouseleave = function(d) {
     .style("opacity", 0)
 }
 
-function updateWindow(){
-    width = w.innerWidth || e.clientWidth || g.clientWidth;
-    height = w.innerHeight|| e.clientHeight|| g.clientHeight;
-    
-    svg.attr("width", width).attr("height", height);
-}
 
 async function loadData() {
 
@@ -67,7 +56,6 @@ async function loadData() {
 
 loadData().then(() => {
 
-    window.onresize = updateWindow;
     co2ForestScene()
 
 })
