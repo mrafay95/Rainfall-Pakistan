@@ -1,7 +1,7 @@
 
 
 
-data = d3.csv('Rainfall_1901_2016_PAK.csv');
+data = await d3.csv('Rainfall_1901_2016_PAK.csv');
 
 var grouped_data = d3.group(data, d => d.Year)
 
