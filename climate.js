@@ -86,8 +86,8 @@ function co2ForestScene() {
     var mousemove = function(d) {
         tooltip
         .html("Region: " + d.Country)
-        .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-        .style("top", (d3.mouse(this)[1]) + "px")
+        .style("left", (d3.pointer(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+        .style("top", (d3.pointer(this)[1]) + "px")
     }
 
 
