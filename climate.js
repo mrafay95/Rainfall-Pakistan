@@ -27,6 +27,7 @@ var tooltip = d3.select("#my_dataviz")
     .style("border-width", "1px")
     .style("border-radius", "5px")
     .style("padding", "10px")
+    .style("position", "absolute")
 
 
 var mouseover = function(d) {
@@ -81,10 +82,9 @@ function co2ForestScene() {
     console.log(co2Forest)
 
     var mousemove = function(d) {
-        console.log(d3.mouse(this))
         tooltip
         .html("Region: " + d.Country + " CO2: " + d.CO2 + " Forest: " + d.Forest)
-        .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+        .style("left", (d3.mouse(this)[0]) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
         .style("top", (d3.mouse(this)[1]) + "px")
     }
 
