@@ -1,5 +1,6 @@
 
 var data;
+var grouped_data
 
 async function loadData() {
 
@@ -9,9 +10,18 @@ async function loadData() {
 loadData().then(() => {
 
 
-    var grouped_data = d3.group(data, d => d.Year)
+    grouped_data = d3.group(data, d => d.Year)
 
     console.log(grouped_data)
+
+    grouped_data.forEach(function(d,i){
+        
+        grouped_data.set(i,d3.mean(_.pluck(grouped_data.get(i), 'Rainfall_MM')))
+    })
+
+    console.log(grouped_data)
+
+
 
 
 
