@@ -1,7 +1,5 @@
 
 
-var d3 = require('d3');
-
 
 data = d3.csv('Rainfall_1901_2016_PAK.csv');
 
