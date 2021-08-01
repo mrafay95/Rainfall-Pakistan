@@ -18,10 +18,6 @@ var svg = d3.select("#my_dataviz")
 
 
 
-var svg = d3.select("svg")
-    .attr("width", width)
-    .attr("height", height)
-
 var tooltip = d3.select("#my_dataviz")
     .append("div")
     .style("opacity", 0)
@@ -94,7 +90,7 @@ function co2ForestScene() {
 
     svg.append('g')
     .attr("transform","translate("+50+","+50+")")
-    .selectAll('circle')
+    .selectAll('dot')
     .data(co2Forest)
     .enter()
     .append('circle')
