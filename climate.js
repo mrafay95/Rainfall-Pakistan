@@ -130,6 +130,15 @@ function co2ForestScene() {
     .on("mouseleave", mouseleave )
 
 
+    svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+
+    svg.append("g")
+    .call(d3.axisLeft(y));
+
+
+
 }
 
 
