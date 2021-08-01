@@ -63,8 +63,8 @@ loadData().then(() => {
 
 function co2ForestScene() {
 
-    var x = d3.scaleLog().domain([0,200000]).range([ 0, 200000 ]).base(10)
-    var y = d3.scaleLog().domain([0,150000]).range([ 200000, 0]).base(10)
+    var x = d3.scaleLog().domain([0,34041046]).range([ 0, width ]).base(10)
+    var y = d3.scaleLog().domain([0,20055411]).range([ height, 0]).base(10)
 
     //Country_filter = _.where(data, {"Country Name": Country});
 
@@ -130,12 +130,13 @@ function co2ForestScene() {
     .on("mouseleave", mouseleave )
 
 
-    svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
-
-    svg.append("g")
-    .call(d3.axisLeft(y));
+    d3.select('svg').append('g')
+    .attr("transform","translate("+50+","+50+")")
+    .call(d3.axisLeft(y).tickValues([10, 20, 50, 100]).tickFormat(d => d3.format('~s')(d)));
+    
+    d3.select('svg').append('g')
+    .attr("transform","translate("+50+","+250+")")
+    .call(d3.axisBottom(x).tickValues([10, 20, 50, 100]).tickFormat(d => d3.format('~s')(d)));
 
 
 
