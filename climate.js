@@ -115,7 +115,9 @@ function co2ForestScene() {
     }).attr('r', function(d,i){ 
         
         if(d.CO2 == '..' || d.Forest == '..'){
+            console.log(d.Country) 
             return 0
+
         } else{
             return 7;
         }
