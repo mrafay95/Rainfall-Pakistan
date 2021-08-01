@@ -4,7 +4,6 @@ var data;
 async function loadData() {
 
     data = await d3.csv('Rainfall_1901_2016_PAK.csv');
-    return d;
 }
 
 loadData().then(() => {
