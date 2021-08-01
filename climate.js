@@ -15,6 +15,31 @@ var svg = d3.select("svg")
     .attr("width", x)
     .attr("height", y)
 
+var tooltip = d3.select("#plot_tooltip")
+    .append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "1px")
+    .style("border-radius", "5px")
+    .style("padding", "10px")
+
+
+var mouseover = function(d) {
+        tooltip
+        .style("opacity", 1)
+    }
+
+
+
+// A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+var mouseleave = function(d) {
+    tooltip
+    .transition()
+    .duration(200)
+    .style("opacity", 0)
+}
 
 function updateWindow(){
     x = w.innerWidth || e.clientWidth || g.clientWidth;
@@ -58,6 +83,13 @@ function co2ForestScene() {
 
     console.log(co2Forest)
 
+    var mousemove = function(d) {
+        tooltip
+        .html("Region: " + d.Country)
+        .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+        .style("top", (d3.mouse(this)[1]) + "px")
+    }
+
 
     d3.select('svg').append('g')
     .attr("transform","translate("+50+","+50+")")
@@ -87,7 +119,12 @@ function co2ForestScene() {
         } else{
             return 7;
         }
-    })
+    }).style("fill", "#69b3a2")
+    .style("opacity", 0.3)
+    .style("stroke", "white")
+    .on("mouseover", mouseover )
+    .on("mousemove", mousemove )
+    .on("mouseleave", mouseleave )
 
 
 }
