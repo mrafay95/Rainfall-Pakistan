@@ -59,8 +59,8 @@ loadData().then(() => {
 
 function co2ForestScene() {
 
-    var x = d3.scaleLinear().domain([0,34041046]).range([ 0, width ])
-    var y = d3.scaleLinear().domain([0,20055411]).range([ height, 0])
+    var x = d3.scaleLinear().domain([0,10000000]).range([ 0, width ])
+    var y = d3.scaleLinear().domain([0,10000000]).range([ height, 0])
 
     //Country_filter = _.where(data, {"Country Name": Country});
 
