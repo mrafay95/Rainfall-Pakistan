@@ -4,6 +4,18 @@ var data;
 var Country = 'World';
 var Year = '2018'
 
+var margin = {top: 10, right: 30, bottom: 30, left: 60},
+    width = 460 - margin.left - margin.right,
+    height = 450 - margin.top - margin.bottom;
+
+var svg = d3.select("#my_dataviz")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");  
+
 var w = window,
     d = document,
     e = d.documentElement,
@@ -15,7 +27,7 @@ var svg = d3.select("svg")
     .attr("width", width)
     .attr("height", height)
 
-var tooltip = d3.select("#plot_tooltip")
+var tooltip = d3.select("#my_dataviz")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
@@ -92,7 +104,7 @@ function co2ForestScene() {
     }
 
 
-    d3.select('svg').append('g')
+    svg.append('g')
     .attr("transform","translate("+50+","+50+")")
     .selectAll('circle')
     .data(co2Forest)
