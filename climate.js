@@ -127,7 +127,7 @@ function co2ForestScene() {
 
 
     svg.append("g")
-    .attr("transform", "translate(0,0)")
+    .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).tickValues([1000, 100000, 500000, 1000000, 5000000, 10000000]).tickFormat(d => d3.format('~s')(d)));
     
     svg.append("g")
