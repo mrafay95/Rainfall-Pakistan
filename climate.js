@@ -35,13 +35,13 @@ function co2ForestScene() {
 
     console.log(data)
 
-    Country_filter = _.where(data, {"Country Name": Country});
+    //Country_filter = _.where(data, {"Country Name": Country});
 
-    CO2_filter = _.where(Country_filter, {"Series Name": "CO2 emissions (kt)"});
-    Forest_filter = _.where(Country_filter, {"Series Name": "Forest area (sq. km)"});
+    CO2_filter = _.where(data, {"Series Name": "CO2 emissions (kt)"});
+    Forest_filter = _.where(data, {"Series Name": "Forest area (sq. km)"});
 
     C02_array = _.pluck(CO2_filter, Year);
-    Forest_array = _.pluck(CO2_filter, Year);
+    Forest_array = _.pluck(Forest_filter, Year);
     CountryName_array = _.pluck(CO2_filter, 'Country Name');
 
 
