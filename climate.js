@@ -85,7 +85,7 @@ function co2ForestScene() {
         if(d.CO2 == '..' || d.Forest == '..'){
             return 0
         } else{
-            return 2;
+            return 7;
         }
     })
 
