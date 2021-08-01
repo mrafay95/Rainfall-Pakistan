@@ -8,12 +8,12 @@ var w = window,
     d = document,
     e = d.documentElement,
     g = d.getElementsByTagName('body')[0],
-    x = w.innerWidth || e.clientWidth || g.clientWidth,
-    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+    width = w.innerWidth || e.clientWidth || g.clientWidth,
+    height = w.innerHeight|| e.clientHeight|| g.clientHeight;
 
 var svg = d3.select("svg")
-    .attr("width", x)
-    .attr("height", y)
+    .attr("width", width)
+    .attr("height", height)
 
 var tooltip = d3.select("#plot_tooltip")
     .append("div")
@@ -42,10 +42,10 @@ var mouseleave = function(d) {
 }
 
 function updateWindow(){
-    x = w.innerWidth || e.clientWidth || g.clientWidth;
-    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+    width = w.innerWidth || e.clientWidth || g.clientWidth;
+    height = w.innerHeight|| e.clientHeight|| g.clientHeight;
     
-    svg.attr("width", x).attr("height", y);
+    svg.attr("width", width).attr("height", height);
 }
 
 async function loadData() {
@@ -63,7 +63,8 @@ loadData().then(() => {
 
 function co2ForestScene() {
 
-    console.log(data)
+    var x = d3.scaleLog().domain([0,200000]).range([ 0, width ]).base(10)
+    var y = d3.scaleLog().domain([0,150000]).range([ height, 0]).base(10)
 
     //Country_filter = _.where(data, {"Country Name": Country});
 
@@ -99,7 +100,7 @@ function co2ForestScene() {
     .append('circle')
     .attr('cx', function(d,i){
         if(d.Forest != '..'){
-            return d.Forest
+            return x(d.Forest)
         } else{
             return 0;
         }
@@ -108,7 +109,7 @@ function co2ForestScene() {
     .attr('cy', function(d,i){ 
         
         if(d.CO2 != '..'){
-            return d.CO2
+            return y(d.CO2)
         } else{
             return 0;
         }
