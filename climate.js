@@ -4,9 +4,9 @@ var data;
 var Country = 'World';
 var Year = '2018'
 
-var margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 1000 - margin.left - margin.right,
-    height = 900 - margin.top - margin.bottom;
+var margin = {top: 10, right: 50, bottom: 100, left: 100},
+    width = 1400 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom;
 
 var svg = d3.select("#my_dataviz")
     .append("svg")
@@ -81,6 +81,7 @@ function co2ForestScene() {
     console.log(co2Forest)
 
     var mousemove = function(d) {
+        console.log(d3.mouse(this))
         tooltip
         .html("Region: " + d.Country + " CO2: " + d.CO2 + " Forest: " + d.Forest)
         .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
@@ -127,10 +128,10 @@ function co2ForestScene() {
 
     svg.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+    .call(d3.axisBottom(x).tickValues([1000, 100000, 500000, 1000000, 5000000, 10000000]).tickFormat(d => d3.format('~s')(d)));
     
     svg.append("g")
-    .call(d3.axisLeft(y));
+    .call(d3.axisLeft(y).tickValues([100000, 500000, 1000000, 5000000, 10000000]).tickFormat(d => d3.format('~s')(d)));
 
 }
 
