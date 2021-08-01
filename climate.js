@@ -75,7 +75,7 @@ function co2ForestScene() {
         } else{
             return 0;
         }
-    })
+    }).attr('r', '2')
 
 
 }
