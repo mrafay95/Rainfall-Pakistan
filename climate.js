@@ -97,7 +97,7 @@ function co2ForestScene() {
 
     var mousemove = function(d) {
         tooltip
-        .html("Region: " + d.Country + " CO2: " + d.CO2 + " Forest: " + d.Forest)
+        .html("Region: " + d.Country + " CO2 emissions (kt): " + d.CO2 + " Forest area (sq. km): " + d.Forest)
         .style("left", (d3.mouse(this)[0] + 120) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
         .style("top", (d3.mouse(this)[1] + 180) + "px")
     }
@@ -146,10 +146,12 @@ function co2ForestScene() {
 
     svg.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x).tickValues([100, 1000, 100000, 500000, 1000000, 5000000, 10000000]).tickFormat(d => d3.format('~s')(d)));
+    .call(d3.axisBottom(x).tickValues([100, 1000, 100000, 500000, 1000000, 5000000, 10000000]).tickFormat(d => d3.format('~s')(d)))
+    .text("Forest area (sq. km)");;
     
     svg.append("g")
-    .call(d3.axisLeft(y).tickValues([100, 1000, 100000, 500000, 100000, 500000, 1000000, 5000000, 10000000]).tickFormat(d => d3.format('~s')(d)));
+    .call(d3.axisLeft(y).tickValues([100, 1000, 100000, 500000, 100000, 500000, 1000000, 5000000, 10000000]).tickFormat(d => d3.format('~s')(d)))
+    .text("CO2 emissions (kt)");;
 
 }
 
