@@ -69,7 +69,7 @@ var stringToColour = function(str) {
 function chartRender(selectedOption) {
     loadData().then(() => {
         
-        svg.selectAll(".dot").remove();
+        svg.selectAll("circle").remove();
         co2ForestScene(selectedOption)
 
     })
