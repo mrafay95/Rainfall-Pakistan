@@ -63,16 +63,26 @@ var stringToColour = function(str) {
       colour += ('00' + value.toString(16)).substr(-2);
     }
     return colour;
-  }
-
-loadData().then(() => {
-
-    co2ForestScene()
-
-})
+}
 
 
-function co2ForestScene() {
+function chartRender(selectedOption) {
+    loadData().then(() => {
+
+        co2ForestScene(selectedOption)
+
+    })
+}
+
+
+
+
+
+function co2ForestScene(selectedOption) {
+
+    Year = selectedOption
+
+    selectedOptionGroup = ['2006', '2007', '2008', '2009','2010','2011','2012','2013', '2014','2015','2016','2017','2018']
 
     var x = d3.scaleLog().domain([100,10000000]).range([ 0, width ]).base(10)
     var y = d3.scaleLog().domain([100,11000000]).range([ height, 0]).base(10)
@@ -92,6 +102,15 @@ function co2ForestScene() {
         co2Forest.push({'Country': CountryName_array[index], 'CO2': C02_array[index], 'Forest': Forest_array[index]})
         
     }
+
+    // add the options to the button
+    d3.select("#selectButton")
+    .selectAll('myOptions')
+    .data(selectedOptionGroup)
+    .enter()
+    .append('option')
+    .text(function (d) { return d; }) // text showed in the menu
+    .attr("value", function (d) { return d; }) 
 
     console.log(co2Forest)
 
@@ -168,9 +187,23 @@ function co2ForestScene() {
     .attr("transform", "rotate(-90)")
     .text("CO2 emissions (kt)");
 
+
+
+
 }
 
 
+
+
+d3.select("#selectButton").on("change", function(d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select(this).property("value")
+    // run the updateChart function with this selected option
+    chartRender(selectedOption)
+})
+
+
+chartRender(Year)
 
 
 
