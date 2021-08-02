@@ -1,5 +1,7 @@
 
-var data;
+var data1;
+var data2;
+var data3;
 
 var chart = 1;
 
@@ -51,7 +53,10 @@ var mouseleave = function(d) {
 
 async function loadData() {
 
-    data = await d3.csv('CO2_Forest_Data.csv');
+    data1 = await d3.csv('CO2_Forest_Data.csv');
+    data2 = await d3.csv('CO2_GDP_Data.csv');
+    data3 = await d3.csv('CO2_Power_Data.csv');
+
 }
 
 
@@ -77,6 +82,10 @@ function chartRender(selectedOption) {
         svg.selectAll("g").remove();
 
         if(chart == 1){
+            co2GDPScene(selectedOption)
+        } else if(chart == 2) {
+            co2PowerScene(selectedOption)
+        } else if(chart == 3) {
             co2ForestScene(selectedOption)
         }
 
@@ -109,15 +118,12 @@ function co2ForestScene(selectedOption) {
         
     }
 
-    console.log(co2Forest)
-
     var mousemove = function(d) {
         tooltip
         .html("Region: " + d.Country + " CO2 emissions (kt): " + d.CO2 + " Forest area (sq. km): " + d.Forest)
         .style("left", (d3.mouse(this)[0] + 120) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
         .style("top", (d3.mouse(this)[1] + 180) + "px")
     }
-
 
     svg.append('g')
     .selectAll('dot')
@@ -186,6 +192,207 @@ function co2ForestScene(selectedOption) {
 
 
 
+
+}
+
+
+
+function co2PowerScene(selectedOption) {
+
+
+    var x = d3.scaleLinear().domain([0,15000]).range([ 0, width ])
+    var y = d3.scaleLinear().domain([0,20]).range([ height, 0])
+
+    //Country_filter = _.where(data, {"Country Name": Country});
+
+    CO2_filter = _.where(data, {"Series Name": "CO2 emissions (metric tons per capita)"});
+    Forest_filter = _.where(data, {"Series Name": "Electric power consumption (kWh per capita)"});
+
+    C02_array = _.pluck(CO2_filter, selectedOption);
+    Forest_array = _.pluck(Forest_filter, selectedOption);
+    CountryName_array = _.pluck(CO2_filter, 'Country Name');
+
+
+    var co2Forest = []
+    for (let index = 0; index < CountryName_array.length; index++) {
+        co2Forest.push({'Country': CountryName_array[index], 'CO2': C02_array[index], 'Power': Forest_array[index]})
+        
+    }
+
+    var mousemove = function(d) {
+        tooltip
+        .html("Region: " + d.Country + " CO2 emissions (metric tons per capita): " + d.CO2 + " Electric power consumption (kWh per capita): " + d.Forest)
+        .style("left", (d3.mouse(this)[0] + 120) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+        .style("top", (d3.mouse(this)[1] + 180) + "px")
+    }
+
+    svg.append('g')
+    .selectAll('dot')
+    .data(co2Forest)
+    .enter()
+    .append('circle')
+    .attr('cx', function(d,i){
+        if((d.Power != '..') && (d.Power > 100)){
+            return x(d.Power)
+        } else{
+            return 0;
+        }
+        
+    })
+    .attr('cy', function(d,i){ 
+        
+        if((d.CO2 != '..') && (d.CO2 > 100)){
+            return y(d.CO2)
+        } else{
+            return 0;
+        }
+    }).attr('r', function(d,i){ 
+        
+        if(d.CO2 == '..' || d.Power == '..' ||  d.Power < 100 || d.CO2 < 100){
+            console.log(d.Country) 
+            return 0
+
+        } else{
+            return 7;
+        }
+    }).style("fill", function(d,i) {
+
+        return stringToColour(d.Country);
+
+    })
+    .style("opacity", 0.5)
+    .style("stroke", "white")
+    .on("mouseover", mouseover )
+    .on("mousemove", mousemove )
+    .on("mouseleave", mouseleave )
+
+
+    svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+    
+    svg.append("text")
+    .attr("class", "x label")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height - 6)
+    .text("Electric power consumption (kWh per capita)");
+    
+    
+    svg.append("g")
+    .call(d3.axisLeft(y))
+    
+
+    svg.append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "end")
+    .attr("y", 6)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .text("CO2 emissions (kt)");
+
+
+
+
+}
+
+
+
+
+
+function co2GDPScene(selectedOption) {
+
+
+    var x = d3.scaleLinear().domain([0,70000]).range([ 0, width ])
+    var y = d3.scaleLinear().domain([0,20]).range([ height, 0])
+
+    //Country_filter = _.where(data, {"Country Name": Country});
+
+    CO2_filter = _.where(data, {"Series Name": "CO2 emissions (metric tons per capita)"});
+    Forest_filter = _.where(data, {"Series Name": "GDP per capita (current US$)"});
+
+    C02_array = _.pluck(CO2_filter, selectedOption);
+    Forest_array = _.pluck(Forest_filter, selectedOption);
+    CountryName_array = _.pluck(CO2_filter, 'Country Name');
+
+
+    var co2Forest = []
+    for (let index = 0; index < CountryName_array.length; index++) {
+        co2Forest.push({'Country': CountryName_array[index], 'CO2': C02_array[index], 'GDP': Forest_array[index]})
+        
+    }
+
+    var mousemove = function(d) {
+        tooltip
+        .html("Region: " + d.Country + " CO2 emissions (metric tons per capita): " + d.CO2 + " GDP per capita (current US$): " + d.Forest)
+        .style("left", (d3.mouse(this)[0] + 120) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+        .style("top", (d3.mouse(this)[1] + 180) + "px")
+    }
+
+    svg.append('g')
+    .selectAll('dot')
+    .data(co2Forest)
+    .enter()
+    .append('circle')
+    .attr('cx', function(d,i){
+        if((d.GDP != '..') && (d.GDP > 100)){
+            return x(d.GDP)
+        } else{
+            return 0;
+        }
+        
+    })
+    .attr('cy', function(d,i){ 
+        
+        if((d.CO2 != '..') && (d.CO2 > 100)){
+            return y(d.CO2)
+        } else{
+            return 0;
+        }
+    }).attr('r', function(d,i){ 
+        
+        if(d.CO2 == '..' || d.GDP == '..' ||  d.GDP < 100 || d.CO2 < 100){
+            console.log(d.Country) 
+            return 0
+
+        } else{
+            return 7;
+        }
+    }).style("fill", function(d,i) {
+
+        return stringToColour(d.Country);
+
+    })
+    .style("opacity", 0.5)
+    .style("stroke", "white")
+    .on("mouseover", mouseover )
+    .on("mousemove", mousemove )
+    .on("mouseleave", mouseleave )
+
+
+    svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+    
+    svg.append("text")
+    .attr("class", "x label")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height - 6)
+    .text("GDP per capita (current US$)");
+    
+    
+    svg.append("g")
+    .call(d3.axisLeft(y))
+    
+
+    svg.append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "end")
+    .attr("y", 6)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .text("CO2 emissions (metric tons per capita)");
 
 }
 
