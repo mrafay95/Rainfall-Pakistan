@@ -104,8 +104,8 @@ function co2ForestScene(selectedOption) {
 
     //Country_filter = _.where(data, {"Country Name": Country});
 
-    CO2_filter = _.where(data, {"Series Name": "CO2 emissions (kt)"});
-    Forest_filter = _.where(data, {"Series Name": "Forest area (sq. km)"});
+    CO2_filter = _.where(data1, {"Series Name": "CO2 emissions (kt)"});
+    Forest_filter = _.where(data1, {"Series Name": "Forest area (sq. km)"});
 
     C02_array = _.pluck(CO2_filter, selectedOption);
     Forest_array = _.pluck(Forest_filter, selectedOption);
@@ -232,7 +232,7 @@ function co2PowerScene(selectedOption) {
     .enter()
     .append('circle')
     .attr('cx', function(d,i){
-        if((d.Power != '..') && (d.Power > 100)){
+        if(d.Power != '..'){
             return x(d.Power)
         } else{
             return 0;
@@ -241,14 +241,14 @@ function co2PowerScene(selectedOption) {
     })
     .attr('cy', function(d,i){ 
         
-        if((d.CO2 != '..') && (d.CO2 > 100)){
+        if(d.CO2 != '..'){
             return y(d.CO2)
         } else{
             return 0;
         }
     }).attr('r', function(d,i){ 
         
-        if(d.CO2 == '..' || d.Power == '..' ||  d.Power < 100 || d.CO2 < 100){
+        if(d.CO2 == '..' || d.Power == '..'){
             console.log(d.Country) 
             return 0
 
@@ -344,14 +344,14 @@ function co2GDPScene(selectedOption) {
     })
     .attr('cy', function(d,i){ 
         
-        if((d.CO2 != '..') && (d.CO2 > 100)){
+        if(d.CO2 != '..'){
             return y(d.CO2)
         } else{
             return 0;
         }
     }).attr('r', function(d,i){ 
         
-        if(d.CO2 == '..' || d.GDP == '..' ||  d.GDP < 100 || d.CO2 < 100){
+        if(d.CO2 == '..' || d.GDP == '..'){
             console.log(d.Country) 
             return 0
 
