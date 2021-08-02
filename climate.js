@@ -51,6 +51,20 @@ async function loadData() {
     data = await d3.csv('CO2_Forest_Data.csv');
 }
 
+
+var stringToColour = function(str) {
+    var hash = 0;
+    for (var i = 0; i < str.length; i++) {
+      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    var colour = '#';
+    for (var i = 0; i < 3; i++) {
+      var value = (hash >> (i * 8)) & 0xFF;
+      colour += ('00' + value.toString(16)).substr(-2);
+    }
+    return colour;
+  }
+
 loadData().then(() => {
 
     co2ForestScene()
@@ -118,7 +132,11 @@ function co2ForestScene() {
         } else{
             return 7;
         }
-    }).style("fill", "#69b3a2")
+    }).style("fill", function(d,i) {
+
+        return stringToColour(d.Country);
+
+    })
     .style("opacity", 0.3)
     .style("stroke", "white")
     .on("mouseover", mouseover )
@@ -128,10 +146,10 @@ function co2ForestScene() {
 
     svg.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x).tickValues([1000, 100000, 500000, 1000000, 5000000, 10000000]).tickFormat(d => d3.format('~s')(d)));
+    .call(d3.axisBottom(x).tickValues([100, 1000, 100000, 500000, 1000000, 5000000, 10000000]).tickFormat(d => d3.format('~s')(d)));
     
     svg.append("g")
-    .call(d3.axisLeft(y).tickValues([100000, 500000, 1000000, 5000000, 10000000]).tickFormat(d => d3.format('~s')(d)));
+    .call(d3.axisLeft(y).tickValues([100, 1000, 100000, 500000, 100000, 500000, 1000000, 5000000, 10000000]).tickFormat(d => d3.format('~s')(d)));
 
 }
 
