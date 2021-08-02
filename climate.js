@@ -1,7 +1,6 @@
 
 var data;
 
-var Year = '2018'
 
 var margin = {top: 10, right: 50, bottom: 100, left: 100},
     width = 1400 - margin.left - margin.right,
@@ -80,7 +79,6 @@ function chartRender(selectedOption) {
 
 function co2ForestScene(selectedOption) {
 
-    Year = selectedOption
 
     selectedOptionGroup = ['2006', '2007', '2008', '2009','2010','2011','2012','2013', '2014','2015','2016','2017','2018']
 
@@ -92,8 +90,8 @@ function co2ForestScene(selectedOption) {
     CO2_filter = _.where(data, {"Series Name": "CO2 emissions (kt)"});
     Forest_filter = _.where(data, {"Series Name": "Forest area (sq. km)"});
 
-    C02_array = _.pluck(CO2_filter, Year);
-    Forest_array = _.pluck(Forest_filter, Year);
+    C02_array = _.pluck(CO2_filter, selectedOption);
+    Forest_array = _.pluck(Forest_filter, selectedOption);
     CountryName_array = _.pluck(CO2_filter, 'Country Name');
 
 
@@ -205,7 +203,7 @@ d3.select("#selectButton").on("change", function(d) {
 })
 
 
-chartRender(Year)
+chartRender('2018')
 
 
 
