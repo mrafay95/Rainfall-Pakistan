@@ -233,6 +233,8 @@ function co2PowerScene(selectedOption) {
     .append('circle')
     .attr('cx', function(d,i){
         if(d.Power != '..'){
+            console.log(d.Power)
+            console.log(x(d.Power))
             return x(d.Power)
         } else{
             return 0;
@@ -291,9 +293,6 @@ function co2PowerScene(selectedOption) {
     .attr("transform", "rotate(-90)")
     .text("CO2 emissions (metric tons per capita)");
 
-
-
-
 }
 
 
@@ -335,7 +334,7 @@ function co2GDPScene(selectedOption) {
     .enter()
     .append('circle')
     .attr('cx', function(d,i){
-        if((d.GDP != '..') && (d.GDP > 100)){
+        if(d.GDP != '..'){
             return x(d.GDP)
         } else{
             return 0;
