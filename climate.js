@@ -61,7 +61,7 @@ loadData().then(() => {
 function co2ForestScene() {
 
     var x = d3.scaleLog().domain([1000,10000000]).range([ 0, width ]).base(10)
-    var y = d3.scaleLog().domain([50000,11000000]).range([ height, 0]).base(10)
+    var y = d3.scaleLog().domain([1000,11000000]).range([ height, 0]).base(10)
 
     //Country_filter = _.where(data, {"Country Name": Country});
 
@@ -84,8 +84,8 @@ function co2ForestScene() {
     var mousemove = function(d) {
         tooltip
         .html("Region: " + d.Country + " CO2: " + d.CO2 + " Forest: " + d.Forest)
-        .style("left", (d3.mouse(this)[0]) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-        .style("top", (d3.mouse(this)[1]) + "px")
+        .style("left", (x(d3.mouse(this)[0])) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+        .style("top", (y(d3.mouse(this)[1])) + "px")
     }
 
 
