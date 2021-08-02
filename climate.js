@@ -147,11 +147,25 @@ function co2ForestScene() {
     svg.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).tickValues([100, 1000, 100000, 500000, 1000000, 5000000, 10000000]).tickFormat(d => d3.format('~s')(d)))
-    .text("Forest area (sq. km)");;
+    
+    svg.append("text")
+    .attr("class", "x label")
+    .attr("text-anchor", "end")
+    .attr("y", height - 6)
+    .text("Forest area (sq. km)");
+    
     
     svg.append("g")
     .call(d3.axisLeft(y).tickValues([100, 1000, 100000, 500000, 100000, 500000, 1000000, 5000000, 10000000]).tickFormat(d => d3.format('~s')(d)))
-    .text("CO2 emissions (kt)");;
+    
+
+    svg.append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "end")
+    .attr("y", 6)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .text("CO2 emissions (kt)");
 
 }
 
