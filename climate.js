@@ -99,7 +99,7 @@ function co2ForestScene() {
         tooltip
         .html("Region: " + d.Country + " CO2: " + d.CO2 + " Forest: " + d.Forest)
         .style("left", (d3.mouse(this)[0] + 120) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-        .style("top", (d3.mouse(this)[1] + 120) + "px")
+        .style("top", (d3.mouse(this)[1] + 180) + "px")
     }
 
 
