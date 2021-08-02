@@ -137,7 +137,7 @@ function co2ForestScene() {
         return stringToColour(d.Country);
 
     })
-    .style("opacity", 0.3)
+    .style("opacity", 0.5)
     .style("stroke", "white")
     .on("mouseover", mouseover )
     .on("mousemove", mousemove )
