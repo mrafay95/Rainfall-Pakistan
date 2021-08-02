@@ -104,15 +104,7 @@ function co2ForestScene(selectedOption) {
         
     }
 
-    // add the options to the button
-    d3.select("#selectButton")
-    .selectAll('myOptions')
-    .data(selectedOptionGroup)
-    .enter()
-    .append('option')
-    .text(function (d) { return d; }) // text showed in the menu
-    .attr("value", function (d) { return d; })
-    .property("selected", selectedOption);
+
  
 
     console.log(co2Forest)
@@ -197,11 +189,22 @@ function co2ForestScene(selectedOption) {
 
 
 
+// add the options to the button
+d3.select("#selectButton")
+.selectAll('myOptions')
+.data(selectedOptionGroup)
+.enter()
+.append('option')
+.text(function (d) { return d; }) // text showed in the menu
+.attr("value", function (d) { return d; })
+.property("selected", selectedOption);
+
 
 d3.select("#selectButton").on("change", function(d) {
     // recover the option that has been chosen
     var selectedOption = d3.select(this).property("value")
     // run the updateChart function with this selected option
+    d3.select("#selectButton").selectAll('myOptions').property("selected", selectedOption);
     chartRender(selectedOption)
 })
 
