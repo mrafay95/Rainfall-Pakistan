@@ -68,7 +68,8 @@ var stringToColour = function(str) {
 
 function chartRender(selectedOption) {
     loadData().then(() => {
-
+        
+        d3.selectAll('.dot').remove();
         co2ForestScene(selectedOption)
 
     })
@@ -110,7 +111,9 @@ function co2ForestScene(selectedOption) {
     .enter()
     .append('option')
     .text(function (d) { return d; }) // text showed in the menu
-    .attr("value", function (d) { return d; }) 
+    .attr("value", function (d) { return d; })
+    .property("selected", selectedOption);
+ 
 
     console.log(co2Forest)
 
