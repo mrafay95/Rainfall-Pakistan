@@ -205,8 +205,8 @@ function co2PowerScene(selectedOption) {
 
     //Country_filter = _.where(data, {"Country Name": Country});
 
-    CO2_filter = _.where(data, {"Series Name": "CO2 emissions (metric tons per capita)"});
-    Forest_filter = _.where(data, {"Series Name": "Electric power consumption (kWh per capita)"});
+    CO2_filter = _.where(data3, {"Series Name": "CO2 emissions (metric tons per capita)"});
+    Forest_filter = _.where(data3, {"Series Name": "Electric power consumption (kWh per capita)"});
 
     C02_array = _.pluck(CO2_filter, selectedOption);
     Forest_array = _.pluck(Forest_filter, selectedOption);
@@ -308,8 +308,8 @@ function co2GDPScene(selectedOption) {
 
     //Country_filter = _.where(data, {"Country Name": Country});
 
-    CO2_filter = _.where(data, {"Series Name": "CO2 emissions (metric tons per capita)"});
-    Forest_filter = _.where(data, {"Series Name": "GDP per capita (current US$)"});
+    CO2_filter = _.where(data2, {"Series Name": "CO2 emissions (metric tons per capita)"});
+    Forest_filter = _.where(data2, {"Series Name": "GDP per capita (current US$)"});
 
     C02_array = _.pluck(CO2_filter, selectedOption);
     Forest_array = _.pluck(Forest_filter, selectedOption);
