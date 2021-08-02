@@ -60,8 +60,8 @@ loadData().then(() => {
 
 function co2ForestScene() {
 
-    var x = d3.scaleLog().domain([10,10000000]).range([ 0, width ]).base(10)
-    var y = d3.scaleLog().domain([10,11000000]).range([ height, 0]).base(10)
+    var x = d3.scaleLog().domain([100,10000000]).range([ 0, width ]).base(10)
+    var y = d3.scaleLog().domain([100,11000000]).range([ height, 0]).base(10)
 
     //Country_filter = _.where(data, {"Country Name": Country});
 
@@ -84,8 +84,8 @@ function co2ForestScene() {
     var mousemove = function(d) {
         tooltip
         .html("Region: " + d.Country + " CO2: " + d.CO2 + " Forest: " + d.Forest)
-        .style("left", (x(d3.mouse(this)[0])) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-        .style("top", (y(d3.mouse(this)[1])) + "px")
+        .style("left", (d3.mouse(this)[0] + 120) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+        .style("top", (d3.mouse(this)[1] + 120) + "px")
     }
 
 
@@ -95,7 +95,7 @@ function co2ForestScene() {
     .enter()
     .append('circle')
     .attr('cx', function(d,i){
-        if(d.Forest != '..'){
+        if(d.Forest != '..' && d.Forest < 100){
             return x(d.Forest)
         } else{
             return 0;
@@ -104,14 +104,14 @@ function co2ForestScene() {
     })
     .attr('cy', function(d,i){ 
         
-        if(d.CO2 != '..'){
+        if(d.CO2 != '..' && d.CO2 < 100){
             return y(d.CO2)
         } else{
             return 0;
         }
     }).attr('r', function(d,i){ 
         
-        if(d.CO2 == '..' || d.Forest == '..'){
+        if(d.CO2 == '..' || d.Forest == '..' ||  d.Forest < 100 || d.CO2 < 100){
             console.log(d.Country) 
             return 0
 
