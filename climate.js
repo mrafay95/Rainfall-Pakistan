@@ -1,9 +1,11 @@
 
 var data;
 
-selectedOptionGroup = ['2006', '2007', '2008', '2009','2010','2011','2012','2013', '2014','2015','2016','2017','2018']
+var chart = 1;
 
-selectedOption = '2018'
+var selectedOptionGroup = ['2006', '2007', '2008', '2009','2010','2011','2012','2013', '2014','2015','2016','2017','2018']
+
+var selectedOption = '2018'
 
 var margin = {top: 10, right: 50, bottom: 100, left: 100},
     width = 1400 - margin.left - margin.right,
@@ -73,7 +75,10 @@ function chartRender(selectedOption) {
         svg.selectAll("circle").remove();
         svg.selectAll("text").remove();
         svg.selectAll("g").remove();
-        co2ForestScene(selectedOption)
+
+        if(chart == 1){
+            co2ForestScene(selectedOption)
+        }
 
     })
 }
@@ -103,9 +108,6 @@ function co2ForestScene(selectedOption) {
         co2Forest.push({'Country': CountryName_array[index], 'CO2': C02_array[index], 'Forest': Forest_array[index]})
         
     }
-
-
- 
 
     console.log(co2Forest)
 
@@ -188,6 +190,19 @@ function co2ForestScene(selectedOption) {
 }
 
 
+function changeChart(val){
+    chart = chart + val
+    if(chart == 0){
+        chart = 3
+    } else if(chart == 4) {
+        chart = 1
+    }
+
+    chartRender(selectedOption)
+
+
+}
+
 
 // add the options to the button
 d3.select("#selectButton")
@@ -207,6 +222,9 @@ d3.select("#selectButton").on("change", function(d) {
     d3.select("#selectButton").selectAll('myOptions').property("selected", selectedOption);
     chartRender(selectedOption)
 })
+
+
+
 
 
 chartRender('2018')
