@@ -67,7 +67,7 @@ var stringToColour = function(str) {
 function chartRender(selectedOption) {
     loadData().then(() => {
         
-        d3.selectAll("myOptions").remove();
+        d3.selectAll("option").remove();
         svg.selectAll("circle").remove();
         svg.selectAll("text").remove();
         svg.selectAll("g").remove();
