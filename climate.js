@@ -1,6 +1,9 @@
 
 var data;
 
+selectedOptionGroup = ['2006', '2007', '2008', '2009','2010','2011','2012','2013', '2014','2015','2016','2017','2018']
+
+
 
 var margin = {top: 10, right: 50, bottom: 100, left: 100},
     width = 1400 - margin.left - margin.right,
@@ -67,7 +70,6 @@ var stringToColour = function(str) {
 function chartRender(selectedOption) {
     loadData().then(() => {
         
-        d3.selectAll("option").remove();
         svg.selectAll("circle").remove();
         svg.selectAll("text").remove();
         svg.selectAll("g").remove();
@@ -82,8 +84,6 @@ function chartRender(selectedOption) {
 
 function co2ForestScene(selectedOption) {
 
-
-    selectedOptionGroup = ['2006', '2007', '2008', '2009','2010','2011','2012','2013', '2014','2015','2016','2017','2018']
 
     var x = d3.scaleLog().domain([100,10000000]).range([ 0, width ]).base(10)
     var y = d3.scaleLog().domain([100,11000000]).range([ height, 0]).base(10)
