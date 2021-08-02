@@ -69,7 +69,7 @@ var stringToColour = function(str) {
 function chartRender(selectedOption) {
     loadData().then(() => {
         
-        d3.selectAll('.dot').remove();
+        svg.selectAll(".dot").remove();
         co2ForestScene(selectedOption)
 
     })
