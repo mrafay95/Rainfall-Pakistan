@@ -109,7 +109,7 @@ function co2ForestScene() {
     .enter()
     .append('circle')
     .attr('cx', function(d,i){
-        if(d.Forest != '..' && d.Forest < 100){
+        if((d.Forest != '..') && (d.Forest > 100)){
             return x(d.Forest)
         } else{
             return 0;
@@ -118,7 +118,7 @@ function co2ForestScene() {
     })
     .attr('cy', function(d,i){ 
         
-        if(d.CO2 != '..' && d.CO2 < 100){
+        if((d.CO2 != '..') && (d.CO2 > 100)){
             return y(d.CO2)
         } else{
             return 0;
