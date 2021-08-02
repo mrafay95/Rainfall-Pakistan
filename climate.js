@@ -1,7 +1,6 @@
 
 var data;
 
-var Country = 'World';
 var Year = '2018'
 
 var margin = {top: 10, right: 50, bottom: 100, left: 100},
