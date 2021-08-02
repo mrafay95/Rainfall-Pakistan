@@ -3,7 +3,7 @@ var data;
 
 selectedOptionGroup = ['2006', '2007', '2008', '2009','2010','2011','2012','2013', '2014','2015','2016','2017','2018']
 
-
+selectedOption = '2018'
 
 var margin = {top: 10, right: 50, bottom: 100, left: 100},
     width = 1400 - margin.left - margin.right,
