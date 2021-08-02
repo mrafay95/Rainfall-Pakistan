@@ -69,6 +69,8 @@ function chartRender(selectedOption) {
         
         d3.select("#selectButton").remove();
         svg.selectAll("circle").remove();
+        svg.selectAll("text").remove();
+
         svg.selectAll("g").remove();
         co2ForestScene(selectedOption)
 
