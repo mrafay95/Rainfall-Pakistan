@@ -151,6 +151,7 @@ function co2ForestScene() {
     svg.append("text")
     .attr("class", "x label")
     .attr("text-anchor", "end")
+    .attr("x", width)
     .attr("y", height - 6)
     .text("Forest area (sq. km)");
     
