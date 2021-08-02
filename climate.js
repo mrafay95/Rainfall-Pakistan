@@ -200,7 +200,7 @@ function co2ForestScene(selectedOption) {
 function co2PowerScene(selectedOption) {
 
 
-    var x = d3.scaleLinear().domain([0,15000]).range([ 0, width ])
+    var x = d3.scaleLinear().domain([0,16000]).range([ 0, width ])
     var y = d3.scaleLinear().domain([0,20]).range([ height, 0])
 
     //Country_filter = _.where(data, {"Country Name": Country});
@@ -433,7 +433,7 @@ d3.select("#selectButton").on("change", function(d) {
 
 
 
-chartRender('2018')
+chartRender('2015')
 
 
 
