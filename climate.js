@@ -9,7 +9,7 @@ var selectedOptionGroup = ['2006', '2007', '2008', '2009','2010','2011','2012','
 
 var selectedOption = '2015'
 
-var margin = {top: 10, right: 50, bottom: 100, left: 100},
+var margin = {top: 10, right: 50, bottom: 20, left: 100},
     width = parseInt(d3.select('#my_dataviz').style('width'), 10) - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
 
