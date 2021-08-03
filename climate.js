@@ -5,6 +5,10 @@ var data3;
 
 var chart = 1;
 
+var tooltipOffsetX = 120
+var tooltipOffsetY = 120
+
+
 var selectedOptionGroup = ['2006', '2007', '2008', '2009','2010','2011','2012','2013', '2014','2015','2016','2017','2018']
 
 var selectedOption = '2014'
@@ -135,8 +139,8 @@ function co2ForestScene() {
     var mousemove = function(d) {
         tooltip
         .html("Region: " + d.Country + " CO2 emissions (kt): " + d.CO2 + " Forest area (sq. km): " + d.Forest)
-        .style("left", (d3.mouse(this)[0] + 120) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-        .style("top", (d3.mouse(this)[1] + 180) + "px")
+        .style("left", (d3.mouse(this)[0] + tooltipOffsetX) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+        .style("top", (d3.mouse(this)[1] + tooltipOffsetY) + "px")
     }
 
     svg.append('g')
@@ -270,8 +274,8 @@ function co2PowerScene() {
     var mousemove = function(d) {
         tooltip
         .html("Region: " + d.Country + " CO2 emissions (metric tons per capita): " + d.CO2 + " Electric power consumption (kWh per capita): " + d.Power)
-        .style("left", (d3.mouse(this)[0] + 120) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-        .style("top", (d3.mouse(this)[1] + 180) + "px")
+        .style("left", (d3.mouse(this)[0] + tooltipOffsetX) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+        .style("top", (d3.mouse(this)[1] + tooltipOffsetY) + "px")
     }
 
     svg.append('g')
@@ -375,8 +379,8 @@ function co2GDPScene() {
     var mousemove = function(d) {
         tooltip
         .html("Region: " + d.Country + " CO2 emissions (metric tons per capita): " + d.CO2 + " GDP per capita (current US$): " + d.GDP)
-        .style("left", (d3.mouse(this)[0] + 120) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-        .style("top", (d3.mouse(this)[1] + 180) + "px")
+        .style("left", (d3.mouse(this)[0] + tooltipOffsetX) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+        .style("top", (d3.mouse(this)[1] + tooltipOffsetY) + "px")
     }
 
     svg.append('g')
