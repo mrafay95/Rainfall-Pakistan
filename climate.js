@@ -6,7 +6,7 @@ var data3;
 var chart = 1;
 
 var tooltipOffsetX = 120
-var tooltipOffsetY = 50
+var tooltipOffsetY = 20
 
 
 var selectedOptionGroup = ['2006', '2007', '2008', '2009','2010','2011','2012','2013', '2014','2015','2016','2017','2018']
@@ -138,7 +138,7 @@ function co2ForestScene() {
 
     var mousemove = function(d) {
         tooltip
-        .html("Region: " + d.Country + " CO2 emissions (kt): " + d.CO2 + " Forest area (sq. km): " + d.Forest)
+        .html("Region: " + d.Country + " CO2 emissions (kt): " + Math.round(d.CO2) + " Forest area (sq. km): " + Math.round(d.Forest))
         .style("left", (d3.mouse(this)[0] + tooltipOffsetX) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
         .style("top", (d3.mouse(this)[1] + tooltipOffsetY) + "px")
     }
@@ -212,8 +212,8 @@ function co2ForestScene() {
     const annotations = [
         {
         note: {
-            label: "Here is the annotation label",
-            title: "Annotation title"
+            label: "Nations in the upper-right corner are the ones that produce the most CO2 and convert CO2 to O2 the least",
+            title: "Least Countering Nations"
         },
         x: 100,
         y: 100,
@@ -222,11 +222,11 @@ function co2ForestScene() {
         },
         {
         note: {
-            label: "Here is the annotation label",
-            title: "Annotation title"
+            label: "Nations in the lower-right corner are the ones that produce the least CO2 and convert CO2 to O2 the most",
+            title: "Most Countering Nations"
         },
-        x: 200,
-        y: 100,
+        x: 700,
+        y: 1000,
         dy: 100,
         dx: 100
         }
@@ -273,7 +273,7 @@ function co2PowerScene() {
 
     var mousemove = function(d) {
         tooltip
-        .html("Region: " + d.Country + " CO2 emissions (metric tons per capita): " + d.CO2 + " Electric power consumption (kWh per capita): " + d.Power)
+        .html("Region: " + d.Country + " CO2 emissions (metric tons per capita): " + Math.round(d.CO2) + " Electric power consumption (kWh per capita): " + Math.round(d.Power))
         .style("left", (d3.mouse(this)[0] + tooltipOffsetX) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
         .style("top", (d3.mouse(this)[1] + tooltipOffsetY) + "px")
     }
@@ -378,7 +378,7 @@ function co2GDPScene() {
 
     var mousemove = function(d) {
         tooltip
-        .html("Region: " + d.Country + " CO2 emissions (metric tons per capita): " + d.CO2 + " GDP per capita (current US$): " + d.GDP)
+        .html("Region: " + d.Country + " CO2 emissions (metric tons per capita): " + Math.round(d.CO2) + " GDP per capita (current US$): " + Math.round(d.GDP))
         .style("left", (d3.mouse(this)[0] + tooltipOffsetX) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
         .style("top", (d3.mouse(this)[1] + tooltipOffsetY) + "px")
     }
