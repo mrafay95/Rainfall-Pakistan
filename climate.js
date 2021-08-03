@@ -345,7 +345,7 @@ function co2PowerScene() {
         },
         x: 800,
         y: 530,
-        dy: -40,
+        dy: -30,
         dx: -70
         }
 
@@ -472,7 +472,7 @@ function co2GDPScene() {
         x: 820,
         y: 530,
         dy: -70,
-        dx: -40
+        dx: 40
         }
 
     ]
