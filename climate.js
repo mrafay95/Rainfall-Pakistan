@@ -22,15 +22,17 @@ var svg = d3.select("#my_dataviz")
             "translate(" + margin.left + "," + margin.top + ")");  
 
 // add the options to the button
-var selectDropdown = d3.select("#selectButton")
+d3.select("#selectButton")
         .selectAll('myOptions')
         .data(selectedOptionGroup)
         .enter()
         .append('option')
         .text(function (d) { return d; }) // text showed in the menu
         .attr("value", function (d) { return d; })
-        .property("selected", selectedOption);
+        
 
+var selectDropdown = d3.select("#selectButton");
+selectDropdown.property("selected", selectedOption);
 
 
 var tooltip = d3.select("#my_dataviz")
@@ -428,6 +430,7 @@ d3.select("#selectButton").on("change", function(d) {
     selectedOption = selectDropdown.property("value")
     // run the updateChart function with this selected option
     selectDropdown.property("selected", selectedOption);
+
     chartRender(selectedOption)
 })
 
