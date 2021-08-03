@@ -212,21 +212,11 @@ function co2ForestScene() {
     const annotations = [
         {
         note: {
-            label: "Nations in the upper-right corner are the ones that produce the most CO2 and convert CO2 to O2 the least like Egypt and Saudi Arabia",
-            title: "Least Countering Nations"
-        },
-        x: 100,
-        y: 100,
-        dy: 100,
-        dx: 100
-        },
-        {
-        note: {
-            label: "Nations in the lower-right corner are the ones that produce the least CO2 and convert CO2 to O2 the most like Congo and Zambia",
+            label: "Nations like Congo produce the least CO2 and convert CO2 to O2 the most",
             title: "Most Countering Nations"
         },
-        x: 700,
-        y: 1000,
+        x: 800,
+        y: 450,
         dy: 100,
         dx: 100
         }
