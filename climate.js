@@ -6,7 +6,7 @@ var data3;
 var chart = 1;
 
 var tooltipOffsetX = 120
-var tooltipOffsetY = 120
+var tooltipOffsetY = 50
 
 
 var selectedOptionGroup = ['2006', '2007', '2008', '2009','2010','2011','2012','2013', '2014','2015','2016','2017','2018']
