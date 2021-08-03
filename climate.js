@@ -9,14 +9,13 @@ var selectedOptionGroup = ['2006', '2007', '2008', '2009','2010','2011','2012','
 
 var selectedOption = '2015'
 
-var margin = {top: 10, right: 50, bottom: 100, left: 100},
-    width = 1400 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom;
+var margin = {top: 10, right: 20, bottom: 50, left: 50},
+    width = 1000 - margin.left - margin.right,
+    height = 700 - margin.top - margin.bottom;
 
 var svg = d3.select("#my_dataviz")
     .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("viewbox", "0 0 " + height + margin.top + margin.bottom + " " + width + margin.left + margin.right)
     .append("g")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");  
