@@ -13,9 +13,12 @@ var margin = {top: 10, right: 20, bottom: 50, left: 50},
     width = 1000 - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
 
+var dim1 = height + margin.top + margin.bottom
+var dim2 = width + margin.left + margin.right
+
 var svg = d3.select("#my_dataviz")
     .append("svg")
-      .attr("viewbox", "0 0 " + height + margin.top + margin.bottom + " " + width + margin.left + margin.right)
+      .attr("viewbox", "0 0 " + dim1 + " " + dim2)
     .append("g")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");  
