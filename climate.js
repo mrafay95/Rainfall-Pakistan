@@ -212,7 +212,7 @@ function co2ForestScene() {
     const annotations = [
         {
         note: {
-            label: "Nations like Congo produce the least CO2 and convert CO2 to O2 the most",
+            label: "Nations like Congo produce one of the least CO2 and have one of the biggest forests to counter it",
             title: "Most Countering Nations"
         },
         x: 800,
@@ -466,7 +466,7 @@ function co2GDPScene() {
     const annotations = [
         {
         note: {
-            label: "Nations like Sweden produce the most goods and services yet have one of the least CO2 emissions",
+            label: "Nations like Sweden produce the most goods and services, yet have one of the least CO2 emissions",
             title: "Most Low Carbon Economies"
         },
         x: 800,
