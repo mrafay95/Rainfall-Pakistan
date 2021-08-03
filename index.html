@@ -2,26 +2,36 @@
 
 <head>
 
-    <title>Who is most responsible for climate change?</title>
+    <title>Who is themost responsible for climate change?</title>
 
 </head>
 
 <body>
     <script src="https://d3js.org/d3.v5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.1/underscore-umd-min.js"></script>
- 
+    <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <div class="jumbotron text-center">
-        <h1>Who is most responsible for climate change? <h1>
+        <h1>Who is the most responsible for climate change? <h1>
         <h2>By Muhammad Rafay</h2>
     </div>
 
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
+                <p>
+                    CO2 emissions is the most major factor that is causing climate change. This visulazation uses World Bank World Develpment Indicators dataset to visulaize how different nations in world are contributing CO2 to our atmosphere.
+
+                </p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
 
                 <select id="selectButton"></select>
 
@@ -31,7 +41,18 @@
                 <div id="my_dataviz"></div>
 
             </div>
-            <div class="col-lg-4"></div>
+            <div class="col-lg-3"></div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <select id="selectButton"></select>
+
+                <button onclick="changeChart(1)">Next</button>
+                <button onclick="changeChart(-1)">Previous</button>
+
+            </div>
 
         </div>
     </div>

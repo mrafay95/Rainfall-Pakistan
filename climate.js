@@ -202,7 +202,37 @@ function co2ForestScene() {
     .attr("transform", "rotate(-90)")
     .text("CO2 emissions (kt)");
 
+    // Features of the annotation
+    const annotations = [
+        {
+        note: {
+            label: "Here is the annotation label",
+            title: "Annotation title"
+        },
+        x: 100,
+        y: 100,
+        dy: 100,
+        dx: 100
+        },
+        {
+        note: {
+            label: "Here is the annotation label",
+            title: "Annotation title"
+        },
+        x: 200,
+        y: 100,
+        dy: 100,
+        dx: 100
+        }
 
+    ]
+
+    // Add annotation to the chart
+    const makeAnnotations = d3.annotation()
+    .annotations(annotations)
+
+    svg.append("g")
+    .call(makeAnnotations)
 
 
 }
