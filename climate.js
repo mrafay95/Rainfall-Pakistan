@@ -335,6 +335,29 @@ function co2PowerScene() {
     .attr("transform", "rotate(-90)")
     .text("CO2 emissions (metric tons per capita)");
 
+
+    // Features of the annotation
+    const annotations = [
+        {
+        note: {
+            label: "Nations like Sweden produce the most electric energy yet have one of the least CO2 emissions",
+            title: "Most Clean Electricity Producers"
+        },
+        x: 800,
+        y: 450,
+        dy: -80,
+        dx: -70
+        }
+
+    ]
+
+    // Add annotation to the chart
+    const makeAnnotations = d3.annotation()
+    .annotations(annotations)
+
+    svg.append("g")
+    .call(makeAnnotations)
+
 }
 
 
@@ -437,6 +460,22 @@ function co2GDPScene() {
     .attr("dy", ".75em")
     .attr("transform", "rotate(-90)")
     .text("CO2 emissions (metric tons per capita)");
+
+
+    // Features of the annotation
+    const annotations = [
+        {
+        note: {
+            label: "Nations like Sweden produce the most goods and services yet have one of the least CO2 emissions",
+            title: "Most Low Carbon Economies"
+        },
+        x: 800,
+        y: 450,
+        dy: -80,
+        dx: -70
+        }
+
+    ]
 
 }
 
