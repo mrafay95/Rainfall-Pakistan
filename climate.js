@@ -340,8 +340,8 @@ function co2PowerScene() {
     const annotations = [
         {
         note: {
-            label: "Nations like Sweden produce the most electric energy yet have one of the least CO2 emissions",
-            title: "Most Clean Electricity Producers"
+            label: "Nations like Sweden consume the most electric energy yet have one of the least CO2 emissions",
+            title: "Most Clean Electricity Consumers"
         },
         x: 800,
         y: 450,
@@ -476,6 +476,13 @@ function co2GDPScene() {
         }
 
     ]
+
+    // Add annotation to the chart
+    const makeAnnotations = d3.annotation()
+    .annotations(annotations)
+
+    svg.append("g")
+    .call(makeAnnotations)
 
 }
 
