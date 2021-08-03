@@ -84,7 +84,7 @@ var stringToColour = function(str) {
 }
 
 
-function chartRender(selectedOption) {
+function chartRender() {
     loadData().then(() => {
         
         svg.selectAll("circle").remove();
@@ -92,11 +92,12 @@ function chartRender(selectedOption) {
         svg.selectAll("g").remove();
 
         if(chart == 1){
-            co2GDPScene(selectedOption)
+            co2GDPScene()
         } else if(chart == 2) {
-            co2PowerScene(selectedOption)
+            console.log()
+            co2PowerScene()
         } else if(chart == 3) {
-            co2ForestScene(selectedOption)
+            co2ForestScene()
         }
 
     })
@@ -106,8 +107,9 @@ function chartRender(selectedOption) {
 
 
 
-function co2ForestScene(selectedOption) {
+function co2ForestScene() {
 
+    selectedOption = d3.select("#selectButton").property('value')
 
     var x = d3.scaleLog().domain([100,10000000]).range([ 0, width ]).base(10)
     var y = d3.scaleLog().domain([100,11000000]).range([ height, 0]).base(10)
@@ -207,7 +209,9 @@ function co2ForestScene(selectedOption) {
 
 
 
-function co2PowerScene(selectedOption) {
+function co2PowerScene() {
+
+    selectedOption = d3.select("#selectButton").property('value')
 
 
     var x = d3.scaleLinear().domain([0,16000]).range([ 0, width ])
@@ -309,7 +313,9 @@ function co2PowerScene(selectedOption) {
 
 
 
-function co2GDPScene(selectedOption) {
+function co2GDPScene() {
+
+    selectedOption = d3.select("#selectButton").property('value')
 
 
     var x = d3.scaleLinear().domain([0,70000]).range([ 0, width ])
@@ -424,16 +430,16 @@ function changeChart(val){
     // When the button is changed, run the updateChart function
 d3.select("#selectButton").on("change", function(d) {
     // recover the option that has been chosen
-    var selectedOption = d3.select(this).property("value")
+    selectedOption = d3.select(this).property("value")
     // run the updateChart function with this selected option
-    chartRender(selectedOption)
+    chartRender()
 })
 
 
 
 
 
-chartRender('2015')
+chartRender()
 
 
 
