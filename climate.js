@@ -21,6 +21,16 @@ var svg = d3.select("#my_dataviz")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");  
 
+// add the options to the button
+var selectDropdown = d3.select("#selectButton")
+        .selectAll('myOptions')
+        .data(selectedOptionGroup)
+        .enter()
+        .append('option')
+        .text(function (d) { return d; }) // text showed in the menu
+        .attr("value", function (d) { return d; })
+        .property("selected", selectedOption);
+
 
 
 var tooltip = d3.select("#my_dataviz")
@@ -410,22 +420,14 @@ function changeChart(val){
 }
 
 
-// add the options to the button
-d3.select("#selectButton")
-.selectAll('myOptions')
-.data(selectedOptionGroup)
-.enter()
-.append('option')
-.text(function (d) { return d; }) // text showed in the menu
-.attr("value", function (d) { return d; })
-.property("selected", selectedOption);
+
 
 
 d3.select("#selectButton").on("change", function(d) {
     // recover the option that has been chosen
-    var selectedOption = d3.select(this).property("value")
+    selectedOption = selectDropdown.property("value")
     // run the updateChart function with this selected option
-    d3.select("#selectButton").selectAll('myOptions').property("selected", selectedOption);
+    selectDropdown.property("selected", selectedOption);
     chartRender(selectedOption)
 })
 
