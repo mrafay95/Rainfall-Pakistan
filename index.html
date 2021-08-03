@@ -9,16 +9,28 @@
 <body>
     <script src="https://d3js.org/d3.v5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.1/underscore-umd-min.js"></script>
-    
-    <h1>Who is most responsible for climate change? <h1>
-    <h2>By Muhammad Rafay</h2>
+ 
+    <div class="jumbotron text-center">
+        <h1>Who is most responsible for climate change? <h1>
+        <h2>By Muhammad Rafay</h2>
+    </div>
 
-    <select id="selectButton"></select>
 
-    <button onclick="changeChart(1)">Next</button>
-    <button onclick="changeChart(-1)">Previous</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
 
-    <div id="my_dataviz"></div>
+                <select id="selectButton"></select>
+
+                <button onclick="changeChart(1)">Next</button>
+                <button onclick="changeChart(-1)">Previous</button>
+
+                <div id="my_dataviz"></div>
+                
+            </div>
+
+        </div>
+    </div>
 
     <script src="climate.js"></script>
 
