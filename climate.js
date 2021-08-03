@@ -216,8 +216,8 @@ function co2ForestScene() {
             title: "Most Countering Nations"
         },
         x: 800,
-        y: 450,
-        dy: -80,
+        y: 445,
+        dy: -65,
         dx: 70
         }
 
@@ -344,8 +344,8 @@ function co2PowerScene() {
             title: "Most Clean Electricity Consumers"
         },
         x: 800,
-        y: 450,
-        dy: -80,
+        y: 530,
+        dy: 20,
         dx: -70
         }
 
