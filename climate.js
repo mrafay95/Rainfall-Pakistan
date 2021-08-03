@@ -7,7 +7,7 @@ var chart = 1;
 
 var selectedOptionGroup = ['2006', '2007', '2008', '2009','2010','2011','2012','2013', '2014','2015','2016','2017','2018']
 
-var selectedOption = '2015'
+var selectedOption = '2014'
 
 var margin = {top: 10, right: 50, bottom: 20, left: 100},
     width = parseInt(d3.select('#my_dataviz').style('width'), 10) - margin.left - margin.right,
@@ -108,6 +108,8 @@ function chartRender() {
 
 
 function co2ForestScene() {
+
+    $('#ChartTitle').html('Which nations are countering their CO2 emissions the most?');
 
     selectedOption = d3.select("#selectButton").property('value')
 
@@ -241,6 +243,8 @@ function co2ForestScene() {
 
 function co2PowerScene() {
 
+    $('#ChartTitle').html('Which nations are producing the most clean electricity?');
+
     selectedOption = d3.select("#selectButton").property('value')
 
 
@@ -345,8 +349,9 @@ function co2PowerScene() {
 
 function co2GDPScene() {
 
-    selectedOption = d3.select("#selectButton").property('value')
+    $('#ChartTitle').html('Which nations have the most green economies?');
 
+    selectedOption = d3.select("#selectButton").property('value')
 
     var x = d3.scaleLinear().domain([0,70000]).range([ 0, width ])
     var y = d3.scaleLinear().domain([0,20]).range([ height, 0])
