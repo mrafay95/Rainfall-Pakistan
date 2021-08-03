@@ -217,8 +217,8 @@ function co2ForestScene() {
         },
         x: 800,
         y: 450,
-        dy: -100,
-        dx: 100
+        dy: -80,
+        dx: 70
         }
 
     ]
