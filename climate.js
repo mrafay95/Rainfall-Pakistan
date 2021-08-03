@@ -345,7 +345,7 @@ function co2PowerScene() {
         },
         x: 800,
         y: 530,
-        dy: 20,
+        dy: -40,
         dx: -70
         }
 
@@ -469,10 +469,10 @@ function co2GDPScene() {
             label: "Nations like Sweden produce the most goods and services, yet have one of the least CO2 emissions",
             title: "Most Low Carbon Economies"
         },
-        x: 800,
-        y: 450,
-        dy: -80,
-        dx: -70
+        x: 820,
+        y: 530,
+        dy: -70,
+        dx: -40
         }
 
     ]
